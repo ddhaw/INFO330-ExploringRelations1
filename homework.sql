@@ -29,5 +29,10 @@ DELETE FROM persons WHERE city IN ("Kansas City", "Pittsburgh", "Jacksonville");
 INSERT INTO persons (first_name, last_name, email, gender, title, age, city, state, phone) VALUES ("Dev", "Dhawan", "devdhawan@world.com", "Male", "Coach/Student", 19, "Kirkland", "Washington", "425-240-5586");
 
 -- extra-1.sql) Is the female doctor from West Palm Beach, Florida the same age as the male reverend from Phoenix, Arizona? (1 pt)
+SELECT first_name, last_name, gender, title FROM persons WHERE gender = "Female" AND city = "Palm Beach" AND age = (SELECT age FROM persons WHERE gender = "Male" AND title = "Rev" AND city = "Phoenix" AND state = "Arizona");
+
 -- (extra-2.sql) How many different values are there for "Gender" in this database? (1 pt)
+SELECT DISTINCT gender FROM persons;
+
 -- (extra-3.sql) What is the maximum, minimum, and average age of the people in this database? (1 pt)
+SELECT MIN(age) AS Minimum, MAX(age) AS Maximum, AVG(age) AS Average FROM persons;
